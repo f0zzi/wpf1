@@ -5,8 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="441.469" Width="296.682">
+    <DockPanel>
+        <TextBox Name="tbScreen" DockPanel.Dock="Top" 
+                 Height="69" 
+                 Text="0" 
+                 Margin="0,0,0.4,0"
+                 TextAlignment="Right"
+                 FontSize="48"
+                 TextWrapping="Wrap"/>
+        <Grid DockPanel.Dock="Bottom" TextBlock.FontSize="20">
+            <Grid.RowDefinitions>
+                <RowDefinition>
+
+                </RowDefinition>
+                <RowDefinition>
+
+                </RowDefinition>
+                <RowDefinition>
+
+                </RowDefinition>
+                <RowDefinition>
+
+                </RowDefinition>
+                <RowDefinition>
+
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Click="Digit_Click" Grid.Row="0" Grid.Column="0">7</Button>
+            <Button Click="Digit_Click" Grid.Row="0" Grid.Column="1">8</Button>
+            <Button Click="Digit_Click" Grid.Row="0" Grid.Column="2">9</Button>
+            <Button Click="Operation_Click" Grid.Row="0" Grid.Column="3">+</Button>
+            <Button Click="Digit_Click" Grid.Row="1" Grid.Column="0">4</Button>
+            <Button Click="Digit_Click" Grid.Row="1" Grid.Column="1">5</Button>
+            <Button Click="Digit_Click" Grid.Row="1" Grid.Column="2">6</Button>
+            <Button Click="Operation_Click" Grid.Row="1" Grid.Column="3">-</Button>
+            <Button Click="Digit_Click" Grid.Row="2" Grid.Column="0">1</Button>
+            <Button Click="Digit_Click" Grid.Row="2" Grid.Column="1">2</Button>
+            <Button Click="Digit_Click" Grid.Row="2" Grid.Column="2">3</Button>
+            <Button Click="Operation_Click" Grid.Row="2" Grid.Column="3">*</Button>
+            <Button Click="Digit_Click" Grid.Row="3" Grid.Column="0">0</Button>
+            <Button Click="Digit_Click" Grid.Row="3" Grid.Column="1">.</Button>
+            <Button Click="Switch_sign" Grid.Row="3" Grid.Column="2">+/-</Button>
+            <Button Click="Operation_Click" Grid.Row="3" Grid.Column="3">/</Button>
+            <Button Click="C_Click" Grid.Row="4" Grid.Column="0">C</Button>
+            <Button Click="C_Click" Grid.Row="4" Grid.Column="1">CE</Button>
+            <Button Click="Back_Click" Grid.Row="4" Grid.Column="2">Back</Button>
+            <Button Click="Digit_Click" Grid.Row="4" Grid.Column="3">Enter</Button>
+        </Grid>
+    </DockPanel>
 </Window>
