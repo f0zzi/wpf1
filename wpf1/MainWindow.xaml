@@ -13,7 +13,8 @@
                  Margin="0,0,0.4,0"
                  TextAlignment="Right"
                  FontSize="48"
-                 TextWrapping="Wrap"/>
+                 TextWrapping="Wrap"
+                 IsReadOnly="True"/>
         <Grid DockPanel.Dock="Bottom" TextBlock.FontSize="20">
             <Grid.RowDefinitions>
                 <RowDefinition>
@@ -51,13 +52,13 @@
             <Button Click="Digit_Click" Grid.Row="2" Grid.Column="2">3</Button>
             <Button Click="Operation_Click" Grid.Row="2" Grid.Column="3">*</Button>
             <Button Click="Digit_Click" Grid.Row="3" Grid.Column="0">0</Button>
-            <Button Click="Digit_Click" Grid.Row="3" Grid.Column="1">.</Button>
+            <Button Click="Digit_Click" Grid.Row="3" Grid.Column="1">,</Button>
             <Button Click="Switch_sign" Grid.Row="3" Grid.Column="2">+/-</Button>
             <Button Click="Operation_Click" Grid.Row="3" Grid.Column="3">/</Button>
             <Button Click="C_Click" Grid.Row="4" Grid.Column="0">C</Button>
             <Button Click="C_Click" Grid.Row="4" Grid.Column="1">CE</Button>
             <Button Click="Back_Click" Grid.Row="4" Grid.Column="2">Back</Button>
-            <Button Click="Digit_Click" Grid.Row="4" Grid.Column="3">Enter</Button>
+            <Button Click="Result_Click" Grid.Row="4" Grid.Column="3">Enter</Button>
         </Grid>
     </DockPanel>
 </Window>

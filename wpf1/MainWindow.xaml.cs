@@ -20,8 +20,8 @@ namespace wpf1
     /// </summary>
     public partial class MainWindow : Window
     {
-        double oper1 = 0;
-        double oper2 = 0;
+        double? oper1 = null;
+        double? oper2 = null;
         string operation = null;
         public MainWindow()
         {
@@ -33,9 +33,9 @@ namespace wpf1
             Button tmp = (sender as Button);
             if (tmp.Content.ToString() == "Enter")
                 tbScreen.AppendText("\n");
-            else if (tmp.Content.ToString() == ".")
+            else if (tmp.Content.ToString() == ",")
             {
-                if (!tbScreen.Text.Contains("."))
+                if (!tbScreen.Text.Contains(","))
                     tbScreen.AppendText(tmp.Content.ToString());
             }
             else
@@ -55,39 +55,49 @@ namespace wpf1
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            if (tbScreen.Text != "0")
-                tbScreen.Undo();
+            if (tbScreen.Text.Length > 0 && tbScreen.Text != "0")
+                tbScreen.Text = tbScreen.Text.Remove(tbScreen.Text.Length - 1);
+            if (tbScreen.Text.Length == 0 || tbScreen.Text == "-")
+                tbScreen.Text = "0";
         }
 
         private void C_Click(object sender, RoutedEventArgs e)
         {
-            oper1 = oper2 = 0;
+            oper1 = oper2 = null;
             operation = null;
-            tbScreen.Text = "0";
+            tbScreen.Text = Title = "0";
         }
 
         private void Operation_Click(object sender, RoutedEventArgs e)
         {
+            Button tmp = sender as Button;
             if (operation == null)
             {
                 oper1 = Convert.ToDouble(tbScreen.Text);
-                operation = (sender as Button).Content.ToString();
+                operation = tmp.Content.ToString();
+                tbScreen.Text = "0";
+                Title = $"{oper1} {operation}";
             }
             else
             {
-
+                oper2 = Convert.ToDouble(tbScreen.Text);
+                oper1 = GetResult(oper1, oper2, operation);
+                tbScreen.Text = "0";
+                operation = tmp.Content.ToString();
+                oper2 = null;
+                Title = $"{oper1} {operation}";
             }
         }
-        private double GetResult(double oper1, double oper2, string operation)
+        private double? GetResult(double? oper1, double? oper2, string operation)
         {
-            double result = 0;
-            switch(operation)
+            double? result = 0;
+            switch (operation)
             {
                 case "+":
                     result = oper1 + oper2;
                     break;
                 case "-":
-                    result = oper1 + oper2;
+                    result = oper1 - oper2;
                     break;
                 case "*":
                     result = oper1 * oper2;
@@ -99,6 +109,20 @@ namespace wpf1
                     break;
             }
             return result;
+        }
+
+        private void Result_Click(object sender, RoutedEventArgs e)
+        {
+            if (operation != null)
+            {
+                oper2 = Convert.ToDouble(tbScreen.Text);
+                double? tmp = GetResult(oper1, oper2, operation);
+                Title = $"{oper1} {operation} {oper2}";
+                oper1 = tmp;
+                tbScreen.Text = tmp.ToString();
+                operation = null;
+                oper2 = null;
+            }
         }
     }
 }
